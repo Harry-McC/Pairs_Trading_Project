@@ -39,10 +39,10 @@ before the backtest results confirmed it.
 - **Figure 3** — Strategy vs Buy & Hold Gold cumulative returns
 - **Figure 4** — Spread with long/short trade regions highlighted
 
-<img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/e9f8fae3-594b-4821-92ba-114278988cf1" />
-<img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/fe97ecd0-6d8d-4ba9-aaa7-79a841eb2cb4" />
-<img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/a3da97bf-eb13-4def-bc12-5cc45c280808" />
-<img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/65f63b23-f2af-4351-9a26-60e759a9a660" />
+**Figure 1** <img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/e9f8fae3-594b-4821-92ba-114278988cf1" />
+**Figure 2** <img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/fe97ecd0-6d8d-4ba9-aaa7-79a841eb2cb4" />
+**Figure 3** <img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/a3da97bf-eb13-4def-bc12-5cc45c280808" />
+**Figure 4** <img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/65f63b23-f2af-4351-9a26-60e759a9a660" />
 
 ### Author  
 Harry McCarthy | BSc Economics & Finance, University of Bristol 
