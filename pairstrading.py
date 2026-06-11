@@ -82,6 +82,31 @@ print(f"✓  Spread std:  {df['Spread'].std():.2f}")
 print(f"✓  Spread range:  {df['Spread'].min():.2f} to {df['Spread'].max():.2f}")
 
 
+#PART 5B: CALCULATE THE HEDGE RATIO VIA OLS REGRESSION
+#Rather than assuming a 1:1 relationship, we estimate the true historical
+#ratio of how much gold moves per unit of dollar movement.
+#This gives us a statistically grounded spread that should mean-revert better.
+
+from statsmodels.regression.linear_model import OLS
+from statsmodels.tools import add_constant
+
+# Run OLS: regress gold prices on dollar prices
+X = add_constant(df['Dollar'])   # adds intercept term
+model = OLS(df['Gold'], X).fit()
+hedge_ratio = model.params['Dollar']  # the slope coefficient (β)
+
+print(f"\n✓ OLS Hedge Ratio calculated")
+print(f"  β (hedge ratio): {hedge_ratio:.4f}")
+print(f"  Interpretation: Gold moves ~{hedge_ratio:.2f} units per 1 unit move in DXY")
+print(f"  R-squared: {model.rsquared:.4f}")
+
+# Recalculate the spread using the hedge ratio instead of normalised subtraction
+df['Spread'] = df['Gold'] - hedge_ratio * df['Dollar']
+
+print(f"\n✓ Hedge-ratio-adjusted spread calculated")
+print(f"  Spread mean: {df['Spread'].mean():.2f}")
+print(f"  Spread std:  {df['Spread'].std():.2f}")
+
 #PART 6: ADF STATIONARITY TEST & THE ENGLE-GRANGER COINTEGRATION TEST
 #Need to statistically prove that the spread is mean-reverting (stationary). If it is not,
 #the whole strategy is built on a false assumption.
@@ -234,9 +259,9 @@ df['Gold_return'] = df['Gold'].pct_change()
 df['Dollar_return'] = df['Dollar'].pct_change()
 
 df['Gold_leg'] = df['Signal'].shift(1) * df['Gold_return']
-df['Dollar_leg'] = -df['Signal'].shift(1) * df['Dollar_return']
+df['Dollar_leg'] = -df['Signal'].shift(1) * hedge_ratio * df['Dollar_return']
 
-df['Strategy_return'] = (df['Gold_leg'] + df['Dollar_leg']) / 2
+df['Strategy_return'] = (df['Gold_leg'] + df['Dollar_leg']) / (1 + hedge_ratio)
 #Combined pairs trade return = average of both legs
 #Divide by 2 as we're splitting capital across 2 positions
 
@@ -284,7 +309,7 @@ max_drawdown = drawdown.min()
 
 # Win rate
 active_days = df[df['Strategy_return'] != 0]
-win_rate = (df['Strategy_return'] > 0).sum() / len(df[df['Strategy_return'] != 0]) * 100
+win_rate = (active_days['Strategy_return'] > 0).sum() / len(df[df['Strategy_return'] != 0]) * 100
 
 print("\n" + "="*50)
 print("      PAIRS TRADE PERFORMANCE SUMMARY")
