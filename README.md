@@ -14,24 +14,19 @@ However, ADF and Engle-Granger tests identified a structural breakdown in the go
 **Z-score Signals**: 60 day rolling window, +-2 entry threshold, +-0.5 exit threshold.   
 **Pairs Trade Construction**: Simultaneous long/short positions across both assets.  
 **Backtesting**: Daily returns calculated using prior-day signals to avoid look-ahead bias.  
+**Hedge Ratio**: OLS regression of gold on DXY yielded β = −218.30 (R² = 0.476), confirming the inverse relationship. Spread recalculated as Gold − β × Dollar with position sizing weighted by (1 + β) rather than assuming a 1:1 ratio.
 
 ### Results  
 | Metric | Value |
 |---|---|
-| Strategy Return | −30.8% |
-| Buy & Hold Gold (Benchmark) | +135.8% |
-| Annualised Sharpe Ratio | −0.98 |
-| Maximum Drawdown | −37.42% |
-| Win Rate | 45.3% |  
+| Strategy Return | +2.61% |
+| Buy & Hold Gold (Benchmark) | +135.75% |
+| Annualised Sharpe Ratio | 0.17 |
+| Maximum Drawdown | −6.81% |
+| Win Rate | 51.4% |  
 
 ### Key Finding
-Both the ADF and Engle-Granger tests identified a structural breakdown in the 
-gold/dollar relationship over the sample period. Gold decoupled from its 
-traditional inverse relationship with the dollar, driven by sustained central 
-bank accumulation and geopolitical safe-haven demand. The strategy's negative 
-returns directly confirmed this — mean reversion strategies systematically fail 
-during structural regime changes, a limitation the statistical testing identified 
-before the backtest results confirmed it.
+Both the ADF and Engle-Granger tests identified a structural breakdown in the gold/dollar relationship over the sample period. Gold decoupled from its traditional inverse relationship with the dollar, driven by sustained central bank accumulation and geopolitical safe-haven demand. This was further confirmed by the OLS hedge ratio of β = −218.30 (R² = 0.476), which while capturing the inverse relationship directionally, produced a non-stationary spread (ADF p = 0.56; Engle-Granger p = 0.78), ruling out cointegration. After correcting position sizing via the hedge ratio, the strategy returned +2.61% against gold's +135.75% benchmark, with a Sharpe of 0.17 and maximum drawdown of −6.81%. The near-flat returns directly confirmed the statistical finding — mean reversion strategies correctly sized cannot profitably exploit a relationship undergoing structural regime change, a limitation the testing identified before the backtest results confirmed it.
 
 ### Charts
 - **Figure 1** — Gold vs Dollar Index normalised to 100
