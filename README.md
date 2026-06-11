@@ -34,10 +34,10 @@ Both the ADF and Engle-Granger tests identified a structural breakdown in the go
 - **Figure 3** — Strategy vs Buy & Hold Gold cumulative returns
 - **Figure 4** — Spread with long/short trade regions highlighted
 
-**Figure 1** <img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/e9f8fae3-594b-4821-92ba-114278988cf1" />
-**Figure 2** <img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/fe97ecd0-6d8d-4ba9-aaa7-79a841eb2cb4" />
-**Figure 3** <img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/a3da97bf-eb13-4def-bc12-5cc45c280808" />
-**Figure 4** <img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/65f63b23-f2af-4351-9a26-60e759a9a660" />
+**Figure 1** <img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/1bb42274-1b42-4b1c-9980-457858e30294" />
+**Figure 2** <img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/37a97ee0-521e-40f3-bc29-f009b85033be" />
+**Figure 3** <img width="1800" height="750" alt="image" src="https://github.com/user-attachments/assets/262e3d7b-af76-4172-9afb-c1b75bf0ad1b" />
+**Figure 4** <img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/81314e07-870e-4b41-b213-a617c8a5827a" />
 
 ### Author  
 Harry McCarthy | BSc Economics & Finance, University of Bristol 
